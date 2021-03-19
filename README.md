@@ -19,7 +19,7 @@ $ virtualenv env
 $ pip3 install -r requirements.txt
 ```
 
-### Run the main.py with a list of form names 
+### Run the main.py with commands
 - When you want to get data of a list of forms as json
 example)
 ```sh
