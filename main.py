@@ -1,6 +1,7 @@
 import json
 import click
 from searchbot import IRSFormSearchBot
+from downloadbot import DownloadBot
 
 @click.group()
 def cli():
@@ -21,8 +22,18 @@ def search(forms):
 
 
 @click.command()
-def download():
+@click.argument('downloads', nargs=2)
+def download(downloads):
     click.echo('downloaded forms')
+    try:
+        form_name = downloads[0]
+        min_year = int(downloads[1][:4])
+        max_year = int(downloads[1][5:])
+     
+        download_bot = DownloadBot(form_name, min_year, max_year)
+        download_bot.download()
+    except:
+        print('Check out commands!')
 
 cli.add_command(search)
 cli.add_command(download)
